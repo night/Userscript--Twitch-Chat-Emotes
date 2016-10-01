@@ -153,7 +153,8 @@ function EmoteStore() {
 			42: 'turbo',
 			// Hidden turbo emotes.
 			457: 'turbo',
-			793: 'turbo'
+			793: 'turbo',
+			19194: 'turbo'
 		};
 
 		logger.debug('Initializing emote set change listener.');
@@ -318,6 +319,10 @@ function Emote(details) {
 	this.getChannelName = function () {
 		if (!channel.name) {
 			channel.name = storage.channelNames.get(this.getText());
+		}
+		// protect against future breakage
+		if (!channel.name) {
+			channel.name = 'turbo';
 		}
 		return channel.name;
 	};
