@@ -16,5 +16,6 @@ api.toggleDebug = function (forced) {
 
 api.registerEmoteGetter = emotes.registerGetter;
 api.deregisterEmoteGetter = emotes.deregisterGetter;
+api.onLoad = emotes.onLoad;
 
 module.exports = api;
