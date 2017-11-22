@@ -35,6 +35,10 @@ function UIMenuButton() {
 	this.dom = null;
 }
 
+api.showButton = function() {
+  $('#emote-menu-button').fadeIn();
+}
+
 UIMenuButton.prototype.init = function (timesFailed) {
 	var self = this;
 	var chatButtons = $('.chat-input .chat-buttons-container .flex');
@@ -68,7 +72,7 @@ UIMenuButton.prototype.init = function (timesFailed) {
 
 	// Hide then fade it in.
 	this.dom.hide();
-	this.dom.fadeIn();
+	// this.dom.fadeIn(); // moved to api.showButton
 
 	// Enable clicking.
 	this.dom.on('click', function () {

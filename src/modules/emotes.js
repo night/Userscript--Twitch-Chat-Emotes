@@ -129,6 +129,18 @@ function EmoteStore() {
 		ui.updateEmotes();
 	};
 
+  /**
+   * callback for when emotes are loaded.
+   */
+  var _callback;
+  this.onLoad = function (callback) {
+    if (typeof callback === "function") {
+      _callback = callback;
+    } else if (typeof _callback === "function") {
+      _callback();
+    }
+  }
+
 	/**
 	 * Initializes the raw data from the API endpoints. Should be called at load and/or whenever the API may have changed. Populates internal objects with updated data.
 	 */
@@ -188,11 +200,12 @@ function EmoteStore() {
 						nativeEmotes[emote.text] = new Emote(emote);
 					});
 				});
+        self.onLoad();
+        ui.showButton();
+        hasInitialized = true;
+        logger.debug('Finished EmoteStore initialization.');
 			});
 		});
-
-		hasInitialized = true;
-		logger.debug('Finished EmoteStore initialization.');
 	};
 };
 
