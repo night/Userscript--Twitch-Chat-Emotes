@@ -569,7 +569,7 @@ UIGroup.prototype.removeEmote = function (name) {
 };
 
 function UIFavoritesGroup() {
-	this.dom = $('#starred-emotes-group');
+	this.dom = theMenu.dom.find('#starred-emotes-group');
 	this.emotes = {};
 }
 
