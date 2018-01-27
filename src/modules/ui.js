@@ -48,6 +48,7 @@ api.hideMenu = function () {
 api.attach = function () {
 	theMenuButton.attach();
 	theMenu.attach();
+	theMenu.updateEmotes();
 }
 
 api.updateEmotes = function () {
