@@ -148,7 +148,7 @@ UIMenu.prototype.init = function () {
 
 	// Enable resizing.
 	this.dom.resizable({
-		handle: '[data-command="resize-handle"]',
+		handle: this.dom.find('[data-command="resize-handle"]'),
 		stop: function () {
 			self.togglePinned(true);
 			self.toggleMovement(true);
