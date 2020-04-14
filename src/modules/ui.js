@@ -31,10 +31,10 @@ api.init = function () {
 		if (document.contains(theMenu.dom[0]) && document.contains(theMenuButton.dom[0])) return;
 
 		var newChatSettingsButton = $('.chat-input button[data-a-target="chat-settings"]')[0];
-
-		if (newChatSettingsButton) {
+		var modViewPage = $('.moderation-view-page')[0];
+		if (newChatSettingsButton || modViewPage) {
 			api.attach();
-		} else if (!newChatSettingsButton) {
+		} else {
 			api.hideMenu();
 		}
 	}, 1000);
@@ -82,10 +82,16 @@ UIMenuButton.prototype.init = function () {
 UIMenuButton.prototype.attach = function () {
 	if (document.contains(theMenuButton.dom[0])) return;
 
-	var chatButtons = $('.chat-input button[data-a-target="chat-settings"]').closest('.chat-input div[data-test-selector="chat-input-buttons-container"] .tw-tooltip-wrapper');
-	if (!chatButtons.length) return;
+	var chatButtonsDiv = $('.chat-input button[data-a-target="chat-send-button"]').parent().prev('.tw-relative');
+	if (!chatButtonsDiv.length) return;
 
-	this.dom.insertBefore(chatButtons);
+	if(chatButtonsDiv.children().first().length){
+		// append when reg view
+		chatButtonsDiv.children().first().prepend(this.dom);
+	}else{
+		// append when mod view
+		chatButtonsDiv.prepend(this.dom);
+	}
 
 	// Hide then fade it in.
 	this.dom.hide();
@@ -221,7 +227,7 @@ UIMenu.prototype.toggleDisplay = function (forced) {
 		// Never moved, make it the same size as the chat window.
 		else {
 			var chatContainer = $('.chat-list');
-			
+
 			// Adjust the size to be the same as the chat container.
 			this.dom.height(chatContainer.outerHeight() - (this.dom.outerHeight() - this.dom.height()));
 			this.dom.width(chatContainer.outerWidth() - (this.dom.outerWidth() - this.dom.width()));
