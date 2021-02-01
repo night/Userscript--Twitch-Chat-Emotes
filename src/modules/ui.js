@@ -258,6 +258,7 @@ UIMenu.prototype.toggleDisplay = function (forced) {
 		this.dom.hide();
 		this.toggleEditing(false);
 		this.togglePinned(false);
+		this.clearEmoteSearch();
 	}
 
 	// Also toggle the menu button.
@@ -491,6 +492,11 @@ UIMenu.prototype.doEmoteSearch = function (event) {
 		var shouldShowGroup = group.dom.find('.emote:not(.emote-menu-hidden)').length > 0;
 		group.dom.toggleClass('emote-menu-hidden', !shouldShowGroup);
 	});
+};
+
+UIMenu.prototype.clearEmoteSearch = function () {
+	this.dom.find('[data-command="search-emotes"]').val('');
+	return this;
 };
 
 function UIGroup(emoteInstance) {
