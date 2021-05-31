@@ -51,7 +51,7 @@
     "deamdify": "^0.3.0",
     "generate-userscript-header": "^1.0.0",
     "gulp": "^4.0.2",
-    "gulp-autoprefixer": "^7.0.1",
+    "gulp-autoprefixer": "^8.0.0",
     "gulp-beautify": "^3.0.0",
     "gulp-changed": "^4.0.2",
     "gulp-clean-css": "^4.3.0",
