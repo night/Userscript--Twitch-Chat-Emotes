@@ -165,7 +165,7 @@ function EmoteStore() {
 				var ownerDisplayName = set.owner && set.owner.displayName;
 				set.emotes.forEach(function (emote) {
 					// Set some required info.
-					emote.url = '//static-cdn.jtvnw.net/emoticons/v1/' + emote.id + '/2.0';
+					emote.url = '//static-cdn.jtvnw.net/emoticons/v2/' + emote.id + '/default/dark/2.0';
 					var token;
 					try {
 						token = getEmoteFromRegEx(emote.token);
